@@ -1,1 +1,288 @@
 
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101a2a">
+  <title>IGSU | Portal Operațional</title>
+  <style>
+    :root {
+      --bg: #0b1220;
+      --panel: #121e30;
+      --panel2: #18273c;
+      --red: #d92d3a;
+      --text: #f2f5fa;
+      --muted: #a5b3c6;
+      --border: #293950;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1120px, 92%); margin: auto; }
+
+    header {
+      background: rgba(11,18,32,.97);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .nav {
+      min-height: 76px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand-icon {
+      width: 46px; height: 46px;
+      display: grid; place-items: center;
+      background: var(--red); border-radius: 10px;
+      font-size: 21px; font-weight: 900;
+    }
+    .brand strong { display: block; font-size: 18px; letter-spacing: 1px; }
+    .brand small { color: var(--muted); font-size: 10px; letter-spacing: 1.4px; }
+    nav { display: flex; flex-wrap: wrap; gap: 19px; }
+    nav a { color: var(--muted); font-size: 13px; }
+    nav a:hover { color: white; }
+
+    .hero {
+      padding: 95px 0 85px;
+      background:
+        radial-gradient(ellipse at 80% 20%, #243651 0%, transparent 45%),
+        linear-gradient(135deg, #101c2e, #0b1220 70%);
+      border-bottom: 1px solid var(--border);
+    }
+    .eyebrow {
+      color: #ff707a; font-size: 12px; font-weight: bold;
+      letter-spacing: 2px; text-transform: uppercase;
+      margin-bottom: 17px;
+    }
+    h1 { font-size: clamp(36px, 6vw, 65px); line-height: 1.08; max-width: 750px; }
+    h1 span { color: #ff525f; }
+    .hero p { max-width: 620px; color: var(--muted); margin: 22px 0 28px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn {
+      display: inline-block; padding: 12px 19px; border-radius: 7px;
+      background: var(--red); color: white; font-weight: bold; font-size: 14px;
+      border: 1px solid var(--red); cursor: pointer;
+    }
+    .btn.secondary { background: transparent; border-color: var(--border); }
+    .btn:hover { filter: brightness(1.13); }
+
+    .notice {
+      margin-top: 27px; padding: 12px 15px;
+      border-left: 3px solid var(--red); background: #131e2d;
+      color: var(--muted); font-size: 12px; max-width: 700px;
+    }
+    section { padding: 65px 0; }
+    .section-head { margin-bottom: 26px; }
+    .section-head h2 { font-size: 28px; margin-bottom: 6px; }
+    .section-head p { color: var(--muted); font-size: 14px; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 17px; }
+    .card {
+      background: var(--panel); border: 1px solid var(--border);
+      border-radius: 11px; padding: 23px; transition: .2s;
+    }
+    .card:hover { transform: translateY(-3px); border-color: #526985; }
+    .card-icon { font-size: 25px; margin-bottom: 13px; }
+    .card h3 { font-size: 17px; margin-bottom: 7px; }
+    .card p { color: var(--muted); font-size: 13px; margin-bottom: 15px; }
+    .card a { color: #ff737c; font-size: 13px; font-weight: bold; }
+    .alt { background: #0e1726; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .rows { display: grid; gap: 12px; }
+    .row-item {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 15px; padding: 17px 19px;
+      background: var(--panel); border: 1px solid var(--border); border-radius: 8px;
+    }
+    .row-item p { color: var(--muted); font-size: 12px; }
+    .tag {
+      color: #ff858c; background: #3a1c2a; border-radius: 5px;
+      padding: 4px 8px; font-size: 10px; white-space: nowrap;
+    }
+    .contact-box {
+      padding: 28px; background: var(--panel); border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+    footer { border-top: 1px solid var(--border); padding: 25px 0; color: var(--muted); font-size: 12px; }
+    .footer-inner { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+
+    @media (max-width: 760px) {
+      .nav { padding: 13px 0; align-items: flex-start; flex-direction: column; }
+      nav { gap: 12px; }
+      .hero { padding: 65px 0; }
+      .grid { grid-template-columns: 1fr; }
+      .row-item { align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="brand" href="#acasa">
+      <div class="brand-icon">IG</div>
+      <div>
+        <strong>IGSU</strong>
+        <small>PORTAL OPERAȚIONAL · FIVE M</small>
+      </div>
+    </a>
+    <nav>
+      <a href="#acasa">Acasă</a>
+      <a href="#structura">Structură</a>
+      <a href="#documente">Documente</a>
+      <a href="#proceduri">Proceduri</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="acasa">
+    <div class="container">
+      <div class="eyebrow">Disciplină · Profesionalism · Intervenție</div>
+      <h1>Portalul <span>IGSU</span><br>FiveM Roleplay</h1>
+      <p>
+        Platforma departamentului pentru organizarea personalului,
+        consultarea regulamentelor și accesarea documentelor operaționale
+        ale comunității.
+      </p>
+      <div class="actions">
+        <a class="btn" href="#documente">Consultă documentele</a>
+        <a class="btn secondary" href="#structura">Vezi structura</a>
+      </div>
+      <div class="notice">
+        Portal neoficial, realizat pentru o comunitate FiveM Roleplay.
+        Nu reprezintă un site oficial al IGSU din România.
+      </div>
+    </div>
+  </section>
+
+  <section id="structura">
+    <div class="container">
+      <div class="section-head">
+        <h2>Structura departamentului</h2>
+        <p>Accesează secțiunile principale ale unității.</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <div class="card-icon">🚒</div>
+          <h3>Pompieri</h3>
+          <p>Organizarea echipajelor, responsabilități și reguli de intervenție.</p>
+          <a href="#proceduri">Vezi procedurile →</a>
+        </article>
+        <article class="card">
+          <div class="card-icon">✚</div>
+          <h3>SMURD</h3>
+          <p>Organizare, conduită și proceduri medicale adaptate jocului.</p>
+          <a href="#proceduri">Vezi procedurile →</a>
+        </article>
+        <article class="card">
+          <div class="card-icon">▣</div>
+          <h3>Conducere</h3>
+          <p>Coordonare, responsabilități administrative și ordine interne.</p>
+          <a href="#documente">Documente interne →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt" id="documente">
+    <div class="container">
+      <div class="section-head">
+        <h2>Documente și formulare</h2>
+        <p>Completează ulterior aceste secțiuni cu documentele serverului.</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <div class="card-icon">📘</div>
+          <h3>Regulament general</h3>
+          <p>Reguli de conduită, disciplină și organizare pentru personal.</p>
+          <a href="#contact">Adaugă documentul →</a>
+        </article>
+        <article class="card">
+          <div class="card-icon">📋</div>
+          <h3>Raport de intervenție</h3>
+          <p>Model pentru înregistrarea intervențiilor desfășurate în joc.</p>
+          <a href="#contact">Adaugă formularul →</a>
+        </article>
+        <article class="card">
+          <div class="card-icon">🗂️</div>
+          <h3>Fișă de regrupare</h3>
+          <p>Document pentru evidența personalului și a echipajelor reunite.</p>
+          <a href="#contact">Adaugă formularul →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="proceduri">
+    <div class="container">
+      <div class="section-head">
+        <h2>Proceduri operaționale</h2>
+        <p>Secțiune demonstrativă — completează cu procedurile aprobate pe server.</p>
+      </div>
+      <div class="rows">
+        <div class="row-item">
+          <div>
+            <strong>Prezentarea la serviciu</strong>
+            <p>Echipare, verificări și preluarea atribuțiilor.</p>
+          </div>
+          <span class="tag">PROCEDURĂ</span>
+        </div>
+        <div class="row-item">
+          <div>
+            <strong>Deplasarea la intervenție</strong>
+            <p>Deplasarea echipajelor conform regulilor comunității.</p>
+          </div>
+          <span class="tag">PROCEDURĂ</span>
+        </div>
+        <div class="row-item">
+          <div>
+            <strong>Regruparea echipajelor</strong>
+            <p>Adunarea și evidența personalului după intervenție.</p>
+          </div>
+          <span class="tag">PROCEDURĂ</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt" id="contact">
+    <div class="container">
+      <div class="section-head">
+        <h2>Contact și suport</h2>
+        <p>Adaugă aici invitația Discord și datele comunității tale.</p>
+      </div>
+      <div class="contact-box">
+        <h3>Departamentul IGSU — FiveM</h3>
+        <p style="color:var(--muted);margin:10px 0 20px">
+          Pentru informații, recrutare sau asistență, contactează conducerea
+          departamentului pe serverul comunității.
+        </p>
+        <a class="btn secondary" href="#acasa">Înapoi sus ↑</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <span>IGSU FiveM Roleplay · Portal comunitar neoficial</span>
+    <span>Creat pentru comunitatea de joc</span>
+  </div>
+</footer>
+
+</body>
+</html>
+
